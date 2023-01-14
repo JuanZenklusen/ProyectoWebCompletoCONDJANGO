@@ -1,0 +1,36 @@
+{% extends 'proyectowebapp/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+    {% for mostrar in servicios %}
+
+    <section class="page-section clearfix">
+        <div class="container">
+          <div class="intro">
+            <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{{mostrar.imagen.url}}"
+              alt="">
+            <div class="intro-text left-0 text-center bg-faded p-5 rounded" style="margin-left: 500px;">
+              <h2 class="section-heading mb-4">
+                <span class="section-heading-lower" style="color: yellowgreen;">{{mostrar.titulo}}</span>
+                <hr>
+                <span class="section-heading-upper">{{mostrar.contenido}}</span>
+              </h2>
+      
+            </div>
+          </div>
+        </div>
+      </section>
+
+<!-- <div style="display: grid; margin: auto; width: 600px;">
+    <p>
+        <h2 style="color: white; text-align: center;">{{mostrar.titulo}}</h2>
+        <p style="color: white; text-align: center;">{{mostrar.contenido}}</p>
+        <p><img style="display: block; margin: auto;" src="{{mostrar.imagen.url}}"></p>
+    </p>
+</div> -->
+
+    {% endfor %}
+
+{% endblock %}
