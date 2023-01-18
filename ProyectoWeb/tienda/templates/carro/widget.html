@@ -1,0 +1,48 @@
+<table class="table table-striped table-dark" style="color: white;">
+    <thead>
+        <tr>
+            <th colspan="3" class="text-center" style="background-color: rgb(10, 63, 3);">
+                Carro Compras
+            </th>
+        </tr>
+        <tr>
+            <th style="background-color: rgb(66, 0, 0);">Producto</th>
+            <th style="background-color: rgb(66, 0, 0);">Cantidad</th>
+            <th style="background-color: rgb(66, 0, 0);">Suma</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if request.session.carro.items %}
+            {% for key, value in request.session.carro.items %}
+                <tr class="text-center">
+                    <td>{{value.nombre}}</td>
+                    <td>Cantidad: {{value.cantidad}}</td>
+                    <td>
+                        <a href="{% url 'carro:agregar' value.producto_id %}" class="btn btn-sm btn-success" style="min-width: 35px;">+</a>
+                        <a href="{% url 'carro:restar' value.producto_id %}" class="btn btn-sm btn-danger" style="min-width: 35px;">-</a><br>
+
+                        Subtotal: ${{value.precio}}
+
+                    </td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="3">
+                    <div class="text-center" style="color: rgb(255, 142, 142); text-decoration: dotted;">
+                        Sin productos agregados en el carro.
+                    </div>
+                </td>
+            </tr>
+        {% endif %}
+    </tbody>
+    <tfoot >
+        <tr>
+            <td colspan="3" class="text-rigth">
+                Total: <p style="color: white;">Total: ${{importe_total_carro}}</p>
+            </td>
+        </tr>
+
+    </tfoot>
+
+</table>

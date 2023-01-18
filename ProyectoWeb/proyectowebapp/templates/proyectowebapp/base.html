@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="UTF-8">
@@ -19,6 +19,22 @@
     <span class="site-heading-lower">Gestión de Pedidos</span>
   </h1>
 
+  <!-- login -->
+  
+  <div style="background-color: rgb(22, 22, 22); color: bisque; text-align: right; padding-right: 100px;">
+  
+    {% if user.is_authenticated %}
+
+      Hola {{user.username}}!! &nbsp; | &nbsp; <a href="{% url 'cerrar_sesion' %}">Cerrar sesión</a>
+
+    {% else %}
+
+    <a href="{% url 'loguear' %}"> Login </a> &nbsp; | &nbsp; <a href="{% url 'Autenticacion' %}"> Regístrate </a>
+
+    {% endif %}
+  
+  </div>
+
 
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
@@ -34,16 +50,16 @@
           <li class="nav-item {% if request.path == '/' %}active{% endif %} px-lg-4">
             <a class="nav-link text-uppercase text-expanded" href="{% url 'Home' %}">Inicio</a>
           </li>
-          <li class="nav-item {% if request.path == '/servicios' %}active{% endif %} px-lg-4">
+          <li class="nav-item {% if request.path|slice:':11' == '/servicios/' %}active{% endif %} px-lg-4">
             <a class="nav-link text-uppercase text-expanded" href="{% url 'Servicios' %}">Servicios</a>
           </li>
-          <li class="nav-item {% if request.path == '/tienda' %}active{% endif %} px-lg-4">
+          <li class="nav-item {% if request.path|slice:':8' == '/tienda/' %}active{% endif %} px-lg-4">
             <a class="nav-link text-uppercase text-expanded" href="{% url 'Tienda' %}">Tienda</a>
           </li>
-          <li class="nav-item {% if request.path == '/contacto' %}active{% endif %} px-lg-4">
+          <li class="nav-item {% if request.path|slice:':10' == '/contacto/' %}active{% endif %} px-lg-4">
             <a class="nav-link text-uppercase text-expanded" href="{% url 'Contacto' %}">Contacto</a>
           </li>
-          <li class="nav-item {% if request.path == '/blog' %}active{% endif %} px-lg-4">
+          <li class="nav-item {% if request.path|slice:':6' == '/blog/' %}active{% endif %} px-lg-4">
             <a class="nav-link text-uppercase text-expanded" href="{% url 'Blog' %}">Blog</a>
           </li>
 

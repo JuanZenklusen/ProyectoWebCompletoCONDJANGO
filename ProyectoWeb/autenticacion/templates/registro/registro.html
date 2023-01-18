@@ -1,0 +1,34 @@
+{% extends 'proyectowebapp/base.html' %}
+
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<style>
+    .text-muted{
+        color: rgb(214, 233, 255) !important;
+    }
+
+    .requiredField{
+        font-size: 20px;
+        color: rgb(175, 255, 110);
+    }
+</style>
+
+<form action="" method="post" style="color: white;">
+    {% csrf_token %}
+
+    <div style="width: 50%; margin: auto;">
+
+        {{form|crispy}}
+    
+        <button type="submit" class="btn btn-success">Crear usuario </button>
+
+    </div>
+
+
+</form>
+
+{% endblock %}

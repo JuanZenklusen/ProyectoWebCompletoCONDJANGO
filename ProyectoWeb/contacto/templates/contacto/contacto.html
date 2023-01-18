@@ -1,0 +1,57 @@
+{% extends 'proyectowebapp/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<style>
+    input,
+    textarea {
+        width: 100%;
+        border: solid 2px gray;
+        border-radius: 10px;
+        padding: 10px;
+        margin-left: 20px;
+        opacity: 85%;
+        margin-top: 8px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        background-color: rgb(216, 247, 220);
+    }
+
+    label {
+        color: rgb(210, 250, 210);
+    }
+
+    .btn {
+        width: 600px;
+        background-color: rgba(24, 64, 8);
+        color: azure;
+    }
+
+    .btn:hover {
+        background-color: green;
+        color: azure;
+    }
+
+    tr {
+        margin-top: 5px;
+    }
+</style>
+
+<div class="container" style="margin: auto; width: 900px;">
+
+    {% if 'valido' in request.GET %}
+        <p style="color: rgb(81, 218, 81); text-align: center;">Menaje enviado a uno de nuestros colaboradores, en breve nos pondremos en contacto contigo. Muchas gracias.</p>
+    {% endif %}
+    <p>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <table style="color: rgb(177, 166, 166); width: 600px !important;">
+            {{miFormulario.as_table}}
+        </table>
+        <input class="btn" type="submit" value="Enviar">
+    </form>
+    </p>
+</div>
+<!-- {{request.POST}} -->
+{% endblock %}

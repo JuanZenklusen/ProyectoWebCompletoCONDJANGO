@@ -1,0 +1,31 @@
+{% extends 'proyectowebapp/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+
+{% for mostrar in posts %}
+
+<div class="container">
+    <h1 style="color: white;">{{mostrar.titulo}}</h1>
+    <div class="row">
+        <div class="col-5">
+            <img src="{{mostrar.imagen.url}}" style="width: 450px;"></p>
+        </div>
+        <div class="col">
+            <h2 style="color: white; font-size: 20px;">{{mostrar.contenido}}</h2>
+            <p style="color: white;">Autor: {{mostrar.autor}} | Categoría: {{mostrar.categorias.all}} | Ultima modificacion:
+                {{mostrar.updated}}</p>
+        </div>
+    </div>
+</div>
+<hr>
+<hr>
+
+
+{% endfor %}
+
+
+
+{% endblock %}

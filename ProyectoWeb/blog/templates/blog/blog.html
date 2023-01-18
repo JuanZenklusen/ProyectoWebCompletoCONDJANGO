@@ -1,0 +1,41 @@
+{% extends 'proyectowebapp/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+
+{% for mostrar in posts %}
+
+<div class="container">
+    <h1 style="color: white;">{{mostrar.titulo}}</h1>
+    <div class="row">
+        <div class="col-5">
+            <img src="{{mostrar.imagen.url}}" style="width: 450px;"></p>
+        </div>
+        <div class="col">
+            <h2 style="color: white; font-size: 20px;">{{mostrar.contenido}}</h2>
+            <p style="color: white;">Autor: {{mostrar.autor}} | Ultima modificacion:
+                {{mostrar.updated}}</p>
+        </div>
+    </div>
+</div>
+<hr>
+<hr>
+
+
+{% endfor %}
+
+<section>
+    <div class="container" style="width: 75%; text-align: center; color: bisque;">
+        Categorias:
+        {% for mostrar in posts %}
+            {% for mostrar1 in mostrar.categorias.all %}  
+                +
+                <a href="{% url 'categoria' mostrar1.id %}" style="color: white; text-decoration: none">{{mostrar1.nombre}}</a> &nbsp;
+            {% endfor %}
+        {% endfor %}
+    </div>
+</section>
+
+{% endblock %}
