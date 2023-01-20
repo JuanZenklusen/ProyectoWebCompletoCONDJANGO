@@ -3,13 +3,20 @@
 {% load static %}
 
 {% block content %}
+
+
 <p></p>
 <p></p>
 <div class="container">
+    {% if request.user.is_authenticated %}
     
-    
-    {% include "carro/widget.html" %}
+        {% include "carro/widget.html" %}
 
+    {% else %}
+
+        <div class="text-center" style="color: rgb(255, 185, 185);"> Login para ver tu carro. </div><br>
+
+    {% endif %}
 </div>
 <div class="container">
 

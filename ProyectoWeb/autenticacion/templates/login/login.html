@@ -7,11 +7,11 @@
 {% block content %}
 
 <style>
-    .text-muted{
+    .text-muted {
         color: rgb(214, 233, 255) !important;
     }
 
-    .requiredField{
+    .requiredField {
         font-size: 20px;
         color: rgb(175, 255, 110);
     }
@@ -21,9 +21,20 @@
     {% csrf_token %}
 
     <div style="width: 50%; margin: auto;">
+        <br>
 
+        {% if messages %}
+
+        {% for mensaje in messages %}
+
+        <span class="alert alert-{{mensaje.tags}}">{{mensaje}}</span>
+
+        {% endfor %}
+
+        {% endif %}
+        <br><br>
         {{form|crispy}}
-    
+        <br><br>
         <button type="submit" class="btn btn-success">Iniciar sesion</button>
 
     </div>
